@@ -97,32 +97,27 @@ const icons = [
     }
 ];
 
-
-// const listToFilter = icons.map((icon) => {
-//     return icon;
-// });
-
 const filterIcons = (chosenType, array) => {
     return array.filter((icon) => {
         if (chosenType === 'all') {
-            return true
-        };
+            return true;
+        }
         if (chosenType === icon.type) {
-            return true
-        };
+            return true;
+        }
         return false;
     });
 };
 
-const listFiltered = (filter) => {
+const listToStamp = (value) => {
 
-    const listToFilter = filterIcons(filter, icons);
+    const listFiltered = filterIcons(value, icons);
 
     const containerHTML = document.querySelector('.icons-container');
 
     containerHTML.innerHTML = '';
 
-    listToFilter.forEach((icon) => {
+    listFiltered.forEach((icon) => {
 
         const { name, prefix, type, family } = icon;
         containerHTML.innerHTML +=
@@ -137,12 +132,12 @@ const listFiltered = (filter) => {
 
 };
 
-listFiltered('all');
+listToStamp('all');
 
 const selectorElement = document.querySelector('.type-selector');
 
 selectorElement.addEventListener('change', (event) => {
 
-    listFiltered(event.target.value);
+    listToStamp(event.target.value);
 
 });

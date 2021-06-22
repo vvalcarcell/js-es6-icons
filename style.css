@@ -2,6 +2,27 @@
 box-sizing: border-box;
 margin: 0;
 padding: 0;
+font-family: 'Roboto', sans-serif;
+}
+
+header {
+width: 70%;
+margin: 0 auto;
+}
+
+header .filter {
+color: white;
+background-color: rgb(115, 148, 247);
+height: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+header h1 {
+color: rgb(115, 148, 247);
+font-size: 30px;
+margin: 10px 10px 5px;
 }
 
 .icons-container {
@@ -10,18 +31,23 @@ width: 70%;
 margin: 0 auto;
 display: flex;
 flex-wrap: wrap;
-/* justify-content: center; */
+justify-content: center;
+padding: 10px;
 }
 
 .icon-card {
-width: 200px;
+width: 170px;
 height: 70px;
-border: 1px solid black;
 display: flex;
 flex-direction: column;
 align-items: center;
 align-content: center;
 justify-content: center;
+margin: 20px 20px 50px;
+background-color: white;
+filter: drop-shadow(2px 2px 2px gray);
+border-radius: 5px;
+cursor: pointer;
 }
 
 .icon-card .fas {
@@ -45,4 +71,10 @@ color: orange;
 
 .icon-card .user {
 color: purple;
+}
+
+@media screen and (max-width: 991px) {
+ header, .icons-container {
+width: 100%;
+}
 }
