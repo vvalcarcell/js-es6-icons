@@ -97,16 +97,52 @@ const icons = [
     }
 ];
 
-const containerHTML = document.querySelector('.icons-container');
 
-icons.forEach((icon) => {
+// const listToFilter = icons.map((icon) => {
+//     return icon;
+// });
 
-    const { name, prefix, type, family } = icon;
-    containerHTML.innerHTML +=
-        `
+const filterIcons = (chosenType, array) => {
+    return array.filter((icon) => {
+        if (chosenType === 'all') {
+            return true
+        };
+        if (chosenType === icon.type) {
+            return true
+        };
+        return false;
+    });
+};
+
+const listFiltered = (filter) => {
+
+    const listToFilter = filterIcons(filter, icons);
+
+    const containerHTML = document.querySelector('.icons-container');
+
+    containerHTML.innerHTML = '';
+
+    listToFilter.forEach((icon) => {
+
+        const { name, prefix, type, family } = icon;
+        containerHTML.innerHTML +=
+            `
          <div class="icon-card">
             <i class="${family} ${prefix}${name} ${type}"></i>
             <div class="name">${name}</div>
          </div>
         `
+    });
+
+
+};
+
+listFiltered('all');
+
+const selectorElement = document.querySelector('.type-selector');
+
+selectorElement.addEventListener('change', (event) => {
+
+    listFiltered(event.target.value);
+
 });
